@@ -1,7 +1,7 @@
 import { BinaryTreeNode } from 'binary-tree-visualizer';
 import { peek } from '../../util';
 
-export function binaryTreeFromArithmeticExpr(expr) {
+export function binaryTreeFromArithmeticExpr(expr, balanced) {
   const postfixExpr = infixToPostfix(expr);
   const stack = [];
 
@@ -24,7 +24,25 @@ export function binaryTreeFromArithmeticExpr(expr) {
     stack.push(node);
   });
 
-  return balance(stack[0]);
+  const root = stack[0];
+
+  console.log(balanced);
+  return balanced ? _balance(root) : root;
+}
+
+function _balance(node) {
+  const left = node.left && getBalance(node.left) > 1 
+    ? _balance(node.left)
+    : node.left;
+
+  const newRight = new BinaryTreeNode(node.value);
+  newRight.setLeft(left.right);
+  newRight.setRight(node.right);
+  left.right = newRight;
+
+  console.log(left);
+
+  return left;
 }
 
 const operators = { '+': 1, '-': 1, '*': 2, '/': 2 };

@@ -66,7 +66,9 @@ export function vectorSimulation(tree, config = {
     tickAll(conveyors);
 
     active.forEach((name) => {
-      const open = getFirstOpen(conveyors, operations[name].type);
+      const type = operations[name].type === '-' ? '+' : operations[name].type;
+
+      const open = getFirstOpen(conveyors, type);
       if (open) {
         operations[name].status = Status.InProgress;
         open.input(name);
