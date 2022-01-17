@@ -1,0 +1,1 @@
+export function peek<T>(array: Array<T>): T;

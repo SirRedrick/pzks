@@ -1,0 +1,1 @@
+export function isOperator(char: string): boolean;

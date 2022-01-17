@@ -1,3 +1,3 @@
-export function peek(arr) {
-  return arr[arr.length - 1];
+export function peek(array) {
+  return array[array.length - 1];
 }

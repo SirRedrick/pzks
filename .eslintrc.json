@@ -34,6 +34,7 @@
             "error",
             "always"
         ],
+        "eol-last": ["error", "always"],
         "react/prop-types": "off"
     }
 }

@@ -24,9 +24,7 @@ export function binaryTreeFromArithmeticExpr(expr) {
     stack.push(node);
   });
 
-  const res = balance(stack[0]);
-  console.log(getBalance(res));
-  return res;
+  return balance(stack[0]);
 }
 
 const operators = { '+': 1, '-': 1, '*': 2, '/': 2 };

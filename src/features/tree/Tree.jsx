@@ -4,7 +4,7 @@ import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch';
 
 import { binaryTreeFromArithmeticExpr } from './createTree';
 
-export function Tree({ expression }) {
+export function Tree({ expression, onReadyTree }) {
   const canvasRef = React.useRef(null);
 
   React.useEffect(() => {
@@ -12,6 +12,7 @@ export function Tree({ expression }) {
       try {
         const root = binaryTreeFromArithmeticExpr(expression);
         drawBinaryTree(root, canvasRef.current, { maxHeight: 500, maxWidth: 500 });
+        onReadyTree(root);
       } catch (err) {
         console.error( err);
       }
